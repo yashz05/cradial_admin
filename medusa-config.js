@@ -19,7 +19,7 @@ switch (process.env.NODE_ENV) {
 
 try {
   dotenv.config({ path: process.cwd() + "/" + ENV_FILE_NAME });
-} catch (e) {}
+} catch (e) { }
 
 // CORS when consuming Medusa from admin
 const ADMIN_CORS =
@@ -36,17 +36,17 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
- 
+
   {
-    resolve:`medusa-payment-razorpay`,
-    options:{
-         key_id: process.env.RAZORPAY_ID,
-                key_secret: process.env.RAZORPAY_SECRET,
-                razorpay_account: process.env.RAZORPAY_ACCOUNT,                
-                automatic_expiry_period: 30, /*any value between 12minuts and 30 days expressed in minutes*/
-                manual_expiry_period: 20,
-                refund_speed: "normal", 
-                webhook_secret: process.env.RAZORPAY_SECRET,
+    resolve: `medusa-payment-razorpay`,
+    options: {
+      key_id: process.env.RAZORPAY_ID,
+      key_secret: process.env.RAZORPAY_SECRET,
+      razorpay_account: process.env.RAZORPAY_ACCOUNT,
+      automatic_expiry_period: 30, /*any value between 12minuts and 30 days expressed in minutes*/
+      manual_expiry_period: 20,
+      refund_speed: "normal",
+      webhook_secret: process.env.RAZORPAY_SECRET,
     }
   },
   {
@@ -70,11 +70,11 @@ const plugins = [
   {
     resolve: `medusa-plugin-restock-notification`,
     options: {
-      trigger_delay : 500, // optional, delay time in milliseconds
-      inventory_required : 4, // minimum inventory quantity to consider a variant as restocked
+      trigger_delay: 500, // optional, delay time in milliseconds
+      inventory_required: 4, // minimum inventory quantity to consider a variant as restocked
     },
   },
-  
+
   //  {
   //   resolve: 'medusa-plugin-variant-images',
   //   options: {
@@ -99,18 +99,20 @@ const modules = {
     resolve: "@medusajs/inventory",
   },
 
+
   /*eventBus: {
     resolve: "@medusajs/event-bus-redis",
     options: {
       redisUrl: REDIS_URL
     }
-  },
-  cacheService: {
-    resolve: "@medusajs/cache-redis",
-    options: {
-      redisUrl: REDIS_URL
-    }
   },*/
+   cacheService: {
+      resolve: "@medusajs/cache-redis",
+      options: { 
+        redisUrl: REDIS_URL,
+        ttl: 30,
+      },
+    },
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
@@ -126,7 +128,14 @@ const projectConfig = {
   database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
   // Uncomment the following lines to enable REDIS
-  // redis_url: REDIS_URL
+  redis_url: REDIS_URL,
+  database_extra: process.env.NODE_ENV !== "development" ?
+    {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    } : {},
+
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
