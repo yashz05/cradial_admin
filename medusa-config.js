@@ -53,6 +53,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
+      backend:  process.env.NODE_ENV !== "development" ? 'http://localhost:9000' :process.env.MEDUSA_ADMIN_BACKEND_URL
     },
   },
   {
@@ -86,6 +87,9 @@ const plugins = [
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
       autoRebuild: true,
+      serve: true,
+      backend: "https://cradialadmin.foxlo.tech",
+      outDir: "build",
       develop: {
         open: process.env.OPEN_BROWSER !== "false",
         port: 8091,
