@@ -57,7 +57,7 @@ const CustomPage = () => {
                     title: "Info",
                     description: title + " updated sucessfully",
                     variant: "success",
-                    duration: 5
+                    duration: 5000,
                 })
 
             }

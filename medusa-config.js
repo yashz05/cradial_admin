@@ -53,7 +53,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
-      backend:  process.env.NODE_ENV !== "development" ? 'http://localhost:9000' :process.env.MEDUSA_ADMIN_BACKEND_URL
+      backend_ur:  process.env.NODE_ENV === "development" ? 'http://localhost:9000' :process.env.MEDUSA_ADMIN_BACKEND_URL
     },
   },
   {
