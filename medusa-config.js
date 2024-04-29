@@ -53,7 +53,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
-      backend_ur:  process.env.NODE_ENV === "development" ? 'http://localhost:9000' :process.env.MEDUSA_ADMIN_BACKEND_URL
+      backend_url: process.env.NODE_ENV === "development" ? 'http://localhost:9000' : process.env.MEDUSA_ADMIN_BACKEND_URL
     },
   },
   {
@@ -110,13 +110,13 @@ const modules = {
       redisUrl: REDIS_URL
     }
   },*/
-   cacheService: {
-      resolve: "@medusajs/cache-redis",
-      options: { 
-        redisUrl: REDIS_URL,
-        ttl: 30,
-      },
+  cacheService: {
+    resolve: "@medusajs/cache-redis",
+    options: {
+      redisUrl: REDIS_URL,
+      ttl: 30,
     },
+  },
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
