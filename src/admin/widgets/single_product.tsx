@@ -142,9 +142,9 @@ const single_product = ({
                 </div>
 
 
-                <div >
+                <div className="flex">
 
-                    <div className="w-[250px] m-4">
+                    <div className="w-28 m-4">
                         <Label htmlFor="manage-inventory-small" size="small" >
                             Price
                         </Label>
@@ -156,7 +156,19 @@ const single_product = ({
                             placeholder={!editOpen ? 'Disabled' : "Price"}
                             id="disabled-input" disabled={!editOpen} />
                     </div>
-                    <div className="w-[250px] m-4">
+                    <div className="w-40 m-4">
+                        <Label htmlFor="manage-inventory-small" size="small" >
+                           Discount price Quanity 
+                        </Label>
+                        {/* @ts-ignore */}
+                        <Input
+                            type="number"
+                            value={quantity}
+                            // @ts-ignore
+                            onInput={e => setQuantity(parseInt(e.target.value))}
+                            placeholder={!editOpen ? 'Disabled' : "Quantity"} id="disabled-input" disabled={!editOpen} />
+                    </div>
+                    <div className="w-28 m-4">
                         <Label htmlFor="manage-inventory-small" size="small" >
                             Quanity
                         </Label>
