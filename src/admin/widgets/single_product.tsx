@@ -21,7 +21,7 @@ import type { ProductDetailsWidgetProps } from "@medusajs/admin";
 import { log } from "console";
 
 const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
-  const [editOpen, showEdit, closeEdit, toggle] = useToggleState(false);
+  const [editOpen, showEdit, closeEdit, toggle] = useToggleState(true);
   const [price, setPrice] = useState(0);
 
   const [Salesprice, setSalesPrice] = useState(0);
