@@ -23,7 +23,7 @@ try {
 
 // CORS when consuming Medusa from admin
 const ADMIN_CORS =
-  process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001,http://localhost:8091";
+  process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001,http://localhost:8091,https://persues.cradial.in";
 
 // CORS to avoid issues when consuming Medusa from a client
 const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
@@ -88,7 +88,7 @@ const plugins = [
     options: {
       autoRebuild: true,
       serve: true,
-      backend: "https://cradialadmin.foxlo.tech",
+      backend: "https://persues.cradial.in/",
       outDir: "build",
       develop: {
         open: process.env.OPEN_BROWSER !== "false",

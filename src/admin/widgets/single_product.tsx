@@ -32,9 +32,9 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
   useEffect(() => {
     if (product.variants.length == 1) {
       showEdit();
-    //   @ts-ignore
+      //   @ts-ignore
       setSalesPrice(product.metadata.sales_price ?? 0)
-       //   @ts-ignore
+      //   @ts-ignore
       setColor(product.metadata.product_colors ?? '')
 
       //toggle()
@@ -67,7 +67,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
     updateProduct.mutate({
       metadata: {
         sales_price: Salesprice,
-        product_colors : productcolor
+        product_colors: productcolor
       },
     }, {
       onSuccess: ({ product }) => {
@@ -146,15 +146,17 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
           <Switch
             id="manage-inventory-small"
             size="small"
-            defaultChecked={product.variants.length == 1 ? true : editOpen}
-            onCheckedChange={(vlue) => {
-              //    editOpen ? closeEdit() : showEdit()
-              //    console.log(editOpen);
-              vlue == true ? showEdit() : closeEdit();
-              if (vlue == false) {
-                delete_varaint_functino();
-              }
-            }}
+            checked={true}
+
+          // defaultChecked={product.variants.length == 1 ? true : editOpen}
+          // onCheckedChange={(vlue) => {
+          //   //    editOpen ? closeEdit() : showEdit()
+          //   //    console.log(editOpen);
+          //   vlue == true ? showEdit() : closeEdit();
+          //   if (vlue == false) {
+          //     delete_varaint_functino();
+          //   }
+          // }}
           />
           <Label htmlFor="manage-inventory-small" size="small">
             Enable Single Product (No variants) for {product.title}
@@ -178,21 +180,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
               disabled={!editOpen}
             />
           </div>
-          <div className="w-40 m-4">
-            <Label htmlFor="manage-inventory-small" size="small">
-              Discount price Quanity
-            </Label>
-            {/* @ts-ignore */}
-            <Input
-              type="number"
-              value={quantity}
-              // @ts-ignore
-              onInput={(e) => setQuantity(parseInt(e.target.value))}
-              placeholder={!editOpen ? "Disabled" : "Quantity"}
-              id="disabled-input"
-              disabled={!editOpen}
-            />
-          </div>
+
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
               Quanity
@@ -213,7 +201,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
         <div className="flex">
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-             Sales Price
+              Sales Price
             </Label>
             {/* @ts-ignore */}
             <Input
@@ -229,7 +217,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
           </div>
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-            Product Color
+              Product Color
             </Label>
             {/* @ts-ignore */}
             <Input
@@ -246,7 +234,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
 
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-                Serail Number
+              Serail Number
             </Label>
             {/* @ts-ignore */}
             <Input
