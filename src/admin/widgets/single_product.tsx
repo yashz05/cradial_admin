@@ -7,6 +7,7 @@ import {
   useToggleState,
   Input,
   Button,
+  Copy
 } from "@medusajs/ui";
 import e from "express";
 import { useRef, useState, useEffect } from "react";
@@ -166,7 +167,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
         <div className="flex">
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-              Price
+             Sale Price
             </Label>
             {/* @ts-ignore */}
             <Input
@@ -201,7 +202,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
         <div className="flex">
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-              Sales Price
+               Price
             </Label>
             {/* @ts-ignore */}
             <Input
@@ -240,13 +241,15 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
             <Input
               type="text"
               // @ts-ignore
-              value={product.handle}
+              value={product.id}
               // @ts-ignore
               onInput={(e) => setColor(e.target.value)}
               placeholder={!editOpen ? "Disabled" : "Product Serial Number"}
               id="disabled-input"
               disabled={true}
             />
+            <Copy content={product.id} />
+
           </div>
         </div>
 
