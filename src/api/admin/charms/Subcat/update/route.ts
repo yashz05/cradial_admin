@@ -27,6 +27,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
 
         await subCatRepo.update(existingRecord.id, {
             name: req.body.name.toString(),
+            order: req.body.order.toString(),
             parentId: parseInt(req.body.parentId.toString()),
             active: req.body.active.toString() === 'true' ? true : false
         });

@@ -12,6 +12,9 @@ export class charms_sub_cat extends BaseEntity {
     @Column({ nullable: false })
     parentId: number
 
+    @Column({ nullable: false })
+    order: number
+
     @Column({ nullable: false, default: false })
     active: boolean | false
 

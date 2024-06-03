@@ -19,12 +19,14 @@ export function CharmsSubCat({
 }) {
 
     const { toast } = useToast();
-    const { data, isLoading } = useAdminCustomQuery<{}, {}>(
+    var { data, isLoading } = useAdminCustomQuery<{}, {}>(
         "/charms/subcat/",
         ["message"]
     );
+    // data = data.message.sort((a, b) => a.order - b.order)
     const inputRef = useRef();
-    var active = false;
+    const orderref = useRef();
+    var active = true;
 
     const customPost = useAdminCustomPost
         <{}, {}>(
@@ -76,6 +78,8 @@ export function CharmsSubCat({
         update_charm_cat.mutate({
             // @ts-ignore
             name: inputRef.current.value,
+            // @ts-ignore
+            order: orderref.current.value,
             active: active,
             parentId: id,
             id: uid
@@ -140,6 +144,7 @@ export function CharmsSubCat({
                         {/* @ts-ignore */}
                         {data.message
                             .filter((e: charms_sub_cat) => e.parentId === id)
+                            .sort((a, b) => a.order - b.order)
                             .map((person: charms_sub_cat) => (
                                 <>
                                     <Prompt>
@@ -164,6 +169,7 @@ export function CharmsSubCat({
                                                 <Prompt.Description>
 
                                                     <Input placeholder="category Name" defaultValue={person.name} ref={inputRef} id="sales-channel-name" />
+                                                    <Input placeholder="Order" defaultValue={person.order} ref={orderref} id="sales-channel-name" className="mt-5" />
                                                     <div className="flex items-center gap-x-2 mt-4">
                                                         <Switch id="manage-inventory" defaultChecked={person.active} onCheckedChange={(e) => { active = e }} />
                                                         <Label htmlFor="manage-inventory">Active ?</Label>
