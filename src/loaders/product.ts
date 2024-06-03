@@ -10,7 +10,9 @@ export default async function () {
   adminProductImports.defaultAdminProductRelations = [
     ...adminProductImports.defaultAdminProductRelations,
     'variants.images',
+    
   ];
+ 
 
   storeProductImports.defaultStoreProductsRelations = [
     ...storeProductImports.defaultStoreProductsRelations,
