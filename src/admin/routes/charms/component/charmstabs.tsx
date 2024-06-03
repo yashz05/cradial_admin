@@ -178,7 +178,7 @@ export function CharmsSubCat({
                                             <Prompt.Footer>
                                                 <Prompt.Cancel>Cancel</Prompt.Cancel>
                                                 <Prompt.Action onClick={(e) => update_sub_cat(person.id)}>Update</Prompt.Action>
-                                                <Prompt.Action onClick={(e) => window.location.href = `/a/charmsadd/add/${person.id}`}><Plus /></Prompt.Action>
+                                                <Prompt.Action onClick={(e) => window.location.href = `/app/a/charmsadd/add/${person.id}`}><Plus /></Prompt.Action>
                                                 <Prompt.Action onClick={(e) => delete_sub_cat(person.id)}> <Trash /></Prompt.Action>
                                             </Prompt.Footer>
                                         </Prompt.Content>
