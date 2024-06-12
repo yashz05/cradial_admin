@@ -8,7 +8,7 @@ import { Drawer, Text } from "@medusajs/ui"
 import { useToggleState } from "@medusajs/ui"
 import { Prompt } from "@medusajs/ui"
 const axios = require('axios');
-import {handleUpdate} from "./t"
+
 import { useLocation, useNavigate } from "react-router-dom"
 const CustomPage = () => {
   type CreateProductData = {
@@ -16,6 +16,7 @@ const CustomPage = () => {
     is_giftcard: boolean
     discountable: boolean
   }
+
   const { toast } = useToast();
   const [creating, setcreating] = useState(false)
   const { product_categories, isLoading: isLoadingCategories } = useAdminProductCategories();
@@ -142,18 +143,14 @@ const CustomPage = () => {
   }
 
   function updateVariantPrice(productid, variantid, title, value) {
-
-   
-  
     var options = {
       method: 'POST',
       url: `${process.env.MEDUSA_ADMIN_BACKEND_URL}/admin/products/${productid}/variants/${variantid}`,
       headers: {
-
         'x-medusa-access-token': 'pk_01HYXJRC7R1M64WMHYJK6CJ9ME',
         'Content-Type': 'application/json'
       },
-      data: { prices: [{ amount: parseInt(value)*100, currency_code: 'inr' }] }
+      data: { prices: [{ amount: parseInt(value) * 100, currency_code: 'inr' }] }
     };
 
     axios.request(options).then(function (response) {
@@ -172,7 +169,7 @@ const CustomPage = () => {
   return (
     <>
 
-
+     
       <Container className="p-6">
         <Toaster />
         {isLoadingCategories ? (
@@ -335,15 +332,17 @@ const CustomPage = () => {
                         />
                       </Table.Cell>
                       <Table.Cell>
-                      <Input
+                        <Input
+                          // @ts-ignore
                           onBlur={(e) => {
                             updateVariantPrice(product.id, product?.variants?.[0]?.id, 'inventory', e.target.value)
-                          }} 
+                          }}
                           onInput={(e) => {
+                            // @ts-ignore
                             updateVariantPrice(product.id, product?.variants?.[0]?.id, 'inventory', e.target.value)
                           }}
                           placeholder="Product Inventory Quantity"
-                          defaultValue={product?.variants?.[0]?.prices[0].amount/100 ?? 0}
+                          defaultValue={product?.variants?.[0]?.prices[0].amount / 100 ?? 0}
                           id="sales-channel-name"
                           className="m-2"
                         />
