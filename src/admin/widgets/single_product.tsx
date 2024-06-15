@@ -167,7 +167,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
         <div className="flex">
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-             MRP Price
+             Final Price
             </Label>
             {/* @ts-ignore */}
             <Input
@@ -202,7 +202,7 @@ const single_product = ({ product, notify }: ProductDetailsWidgetProps) => {
         <div className="flex">
           <div className="w-28 m-4">
             <Label htmlFor="manage-inventory-small" size="small">
-              Final Price
+              Mrp Price
             </Label>
             {/* @ts-ignore */}
             <Input
