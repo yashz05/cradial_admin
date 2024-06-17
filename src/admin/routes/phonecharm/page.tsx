@@ -1,6 +1,6 @@
 import { RouteConfig } from "@medusajs/admin"
 
-import { Bolt } from "@medusajs/icons"
+import { Bolt, Phone } from "@medusajs/icons"
 import { Container, ProgressTabs } from "@medusajs/ui"
 import { Heading, Button, Input } from "@medusajs/ui"
 import { useAdminCustomQuery, useAdminCustomPost, useAdminUploadFile } from "medusa-react"
@@ -329,7 +329,7 @@ const PhoneCharm = () => {
 export const config: RouteConfig = {
     link: {
         label: "Phone Charm",
-        icon: Bolt
+        icon: Phone
     },
 }
 export default PhoneCharm
