@@ -40,9 +40,11 @@ const CustomPage = () => {
       ? {
         category_id: [catId],
         expand: 'categories,variants,variants.prices',
+        limit : 799
       }
       : {
         expand: 'categories,variants,variants.prices',
+        limit : 799
       }
   );
   const navigate = useNavigate()
