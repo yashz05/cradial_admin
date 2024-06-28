@@ -133,12 +133,12 @@ const projectConfig = {
   admin_cors: ADMIN_CORS,
   // Uncomment the following lines to enable REDIS
   // redis_url: REDIS_URL,
-  database_extra: process.env.NODE_ENV !== "development" ?
-    {
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    } : {},
+  // database_extra: process.env.NODE_ENV !== "development" ?
+  //   {
+  //     ssl: {
+  //       rejectUnauthorized: false,
+  //     },
+  //   } : {},
 
 };
 
