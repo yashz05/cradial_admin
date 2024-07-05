@@ -23,7 +23,7 @@ try {
 
 // CORS when consuming Medusa from admin
 const ADMIN_CORS =
-  process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001,http://localhost:8091,https://persues.cradial.in";
+  process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001,http://localhost:8091,https://persues.cradial.in,https://cradial.in,https://www.cradial.in";
 
 // CORS to avoid issues when consuming Medusa from a client
 const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
@@ -37,18 +37,18 @@ const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
 
-  {
-    resolve: `medusa-payment-razorpay`,
-    options: {
-      key_id: process.env.RAZORPAY_ID,
-      key_secret: process.env.RAZORPAY_SECRET,
-      razorpay_account: process.env.RAZORPAY_ACCOUNT,
-      automatic_expiry_period: 30, /*any value between 12minuts and 30 days expressed in minutes*/
-      manual_expiry_period: 20,
-      refund_speed: "normal",
-      webhook_secret: process.env.RAZORPAY_SECRET,
-    }
-  },
+  // {
+  //   resolve: `medusa-payment-razorpay`,
+  //   options: {
+  //     key_id: process.env.RAZORPAY_ID,
+  //     key_secret: process.env.RAZORPAY_SECRET,
+  //     razorpay_account: process.env.RAZORPAY_ACCOUNT,
+  //     automatic_expiry_period: 30, /*any value between 12minuts and 30 days expressed in minutes*/
+  //     manual_expiry_period: 20,
+  //     refund_speed: "normal",
+  //     webhook_secret: process.env.RAZORPAY_SECRET,
+  //   }
+  // },
   {
     resolve: `@medusajs/file-local`,
     options: {

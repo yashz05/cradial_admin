@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "checkJs": false
   },
-  "include": ["src/"],
+  "include": ["src/", "medusa-payment-razorpay/src/core/razorpay-base.ts", "medusa-payment-razorpay/src/services/razorpay-provider.ts"],
   "exclude": [
     "**/__tests__",
     "**/__fixtures__",

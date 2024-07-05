@@ -20,7 +20,6 @@
     "watch": "cross-env tsc --watch",
     "test": "cross-env jest",
     "seed": "cross-env medusa seed -f ./data/seed.json",
-    
     "start": "npm run build && medusa migrations run && medusa start",
     "start:custom": "cross-env npm run build && node --preserve-symlinks --trace-warnings index.js",
     "dev": "cross-env npm run build:server && medusa develop"
@@ -45,10 +44,10 @@
     "medusa-fulfillment-manual": "latest",
     "medusa-interfaces": "latest",
     "medusa-payment-manual": "latest",
-    "medusa-payment-razorpay": "^7.1.2",
     "medusa-payment-stripe": "latest",
     "medusa-plugin-restock-notification": "^7.0.3",
     "prism-react-renderer": "^2.0.4",
+    "razorpay": "^2.9.4",
     "typeorm": "^0.3.16"
   },
   "devDependencies": {

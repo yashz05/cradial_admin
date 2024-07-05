@@ -3,7 +3,8 @@ import { IsArray, IsOptional, IsString } from 'class-validator';
 import { AdminPostProductCategoriesCategoryReq as MedusaAdminPostProductCategoriesCategoryReq } from '@medusajs/medusa/dist/api/routes/admin/product-categories'
 import { AdminPostProductsProductVariantsVariantReq as MedusaAdminPostProductsProductVariantsVariantReq } from '@medusajs/medusa/dist/api/routes/admin/products/update-variant';
 import { AdminPostProductsReq as MedusaAdminPostProductsReq, } from "@medusajs/medusa/dist/api/routes/admin/products/create-product"
-
+import { Router } from "express";
+import hooks from "./hooks";
 import { IsBoolean } from 'class-validator';
 
 
@@ -42,6 +43,16 @@ class AdminPostProductsReq extends MedusaAdminPostProductsReq {
 }
 
 registerOverriddenValidators(AdminPostProductsReq)
+
+
+
+export default (container) => {
+    const app = Router();
+  
+    hooks(app);
+  
+    return app;
+  };
 
 
 
