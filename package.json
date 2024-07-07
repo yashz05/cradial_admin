@@ -46,6 +46,7 @@
     "medusa-payment-manual": "latest",
     "medusa-payment-stripe": "latest",
     "medusa-plugin-restock-notification": "^7.0.3",
+    "medusa-plugin-wishlist": "^1.1.43",
     "prism-react-renderer": "^2.0.4",
     "razorpay": "^2.9.4",
     "typeorm": "^0.3.16"

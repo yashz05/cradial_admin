@@ -295,11 +295,11 @@ const CustomPage = () => {
                       <Table.Cell>{i + 1}</Table.Cell>
                       <Table.Cell className="flex w-60"><img src={product.thumbnail} alt={product.title} className="h-10  object-cover mr-2" /><div>
                         <Input placeholder="Product Name"
-                          onBlur={(e) => {
+                          onChange={(e) => {
                             updateProduct(product.id, 'title', e.target.value)
                           }}
                           defaultValue={product.title} id="sales-channel-name" className="m-2" />
-                        <Input placeholder="Product Subtitle" onBlur={(e) => {
+                        <Input placeholder="Product Subtitle" onChange={(e) => {
                           updateProduct(product.id, 'subtitle', e.target.value)
                         }} defaultValue={product.subtitle} id="sales-channel-name" className="m-2" />
 
@@ -323,7 +323,7 @@ const CustomPage = () => {
                       <Table.Cell>
                         <Input
                           placeholder="Product Discount Price to show"
-                          onBlur={(e) => {
+                          onChange={(e) => {
                             updateProduct(product.id, 'metadata.sales_price', e.target.value)
                           }}
                           // @ts-ignore
@@ -336,7 +336,7 @@ const CustomPage = () => {
                       <Table.Cell>
                         <Input
                           // @ts-ignore
-                          onBlur={(e) => {
+                          onChange={(e) => {
                             updateVariantPrice(product.id, product?.variants?.[0]?.id, 'inventory', e.target.value)
                           }}
                           onInput={(e) => {
@@ -351,7 +351,7 @@ const CustomPage = () => {
                       </Table.Cell>
                       <Table.Cell>
                         <Input
-                          onBlur={(e) => {
+                          onChange={(e) => {
                             update_varaiant(product.id, product?.variants?.[0]?.id, 'inventory', e.target.value)
                           }}
                           placeholder="Product Inventory Quantity"
