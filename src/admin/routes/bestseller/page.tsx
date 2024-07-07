@@ -13,10 +13,10 @@ const BestSeller = () => {
 
     )
 }
-export const config: RouteConfig = {
-    link: {
-        label: "Best Seller",
-        icon: Bolt
-    },
-}
+// export const config: RouteConfig = {
+//     link: {
+//         label: "Best Seller",
+//         icon: Bolt
+//     },
+// }
 export default BestSeller
