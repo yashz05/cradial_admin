@@ -26,7 +26,7 @@ const ADMIN_CORS =
   process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001,http://localhost:8091,https://persues.cradial.in,https://cradial.in,https://www.cradial.in";
 
 // CORS to avoid issues when consuming Medusa from a client
-const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
+const STORE_CORS = process.env.STORE_CORS || "http://localhost:7000,http://localhost:7001,http://localhost:8091,https://persues.cradial.in,https://cradial.in,https://www.cradial.in";
 
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
@@ -57,7 +57,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
-      backend_url:  process.env.MEDUSA_ADMIN_BACKEND_URL
+      backend_url: process.env.MEDUSA_ADMIN_BACKEND_URL
     },
   },
   {
