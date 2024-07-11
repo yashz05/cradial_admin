@@ -31,13 +31,13 @@ export default async function userPasswordResetSubscriber({
     
     We received a request to reset your password. If you didn't make the request, just ignore this email. Otherwise, you can reset your password using this link:
     
-    [Reset Password Link]
+    https://cradial.in/reset-password?token=${data.token}    
     
     Thanks,
     The Cradial Team`, // plain text body
         html: `<p>Hello,</p>
                <p>We received a request to reset your password. If you didn't make the request, just ignore this email. Otherwise, you can reset your password using this link:</p>
-               <p><a href="[Reset Password Link]">Reset Password</a></p>
+               <p><a href="https://cradial.in/reset-password?token=${data.token}">Reset Password</a></p>
                <p>Thanks,<br>The Cradial Team</p>`, // html body
     }).catch((err) => {
         console.log(err);
