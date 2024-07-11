@@ -27,7 +27,7 @@ export default async function userPasswordResetSubscriber({
         from: '"Password Reset" <contact@cradial.in>', // sender address
         to: data.email, // list of receivers
         subject: "Password Reset Request", // Subject line
-        text: `Hello,
+        text: `Hello ${data.first_name} ${data.last_name} ,
     
     We received a request to reset your password. If you didn't make the request, just ignore this email. Otherwise, you can reset your password using this link:
     
@@ -53,7 +53,7 @@ export default async function userPasswordResetSubscriber({
 
 
 export const config: SubscriberConfig = {
-    event: "user.password_reset",
+    event: "customer.password_reset",
     context: {
         subscriberId: "product-update-handler",
     },
