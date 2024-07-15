@@ -1,3 +1,4 @@
+"use client"
 import { ComputerDesktop, Spinner, EllipsisHorizontal, Plus, Trash } from "@medusajs/icons";
 import { Label, Switch, Container, Heading, Select, Copy, Code } from "@medusajs/ui";
 import { useAdminCustomQuery, useAdminCustomPost, useAdminUploadFile } from "medusa-react";
@@ -40,11 +41,11 @@ const CustomPage = () => {
       ? {
         category_id: [catId],
         expand: 'categories,variants,variants.prices',
-        limit : 799
+        limit: 799
       }
       : {
         expand: 'categories,variants,variants.prices',
-        limit : 799
+        limit: 799
       }
   );
   const navigate = useNavigate()
@@ -171,7 +172,7 @@ const CustomPage = () => {
   return (
     <>
 
-     
+
       <Container className="p-6">
         <Toaster />
         {isLoadingCategories ? (
@@ -302,6 +303,19 @@ const CustomPage = () => {
                         <Input placeholder="Product Subtitle" onChange={(e) => {
                           updateProduct(product.id, 'subtitle', e.target.value)
                         }} defaultValue={product.subtitle} id="sales-channel-name" className="m-2" />
+                        <div className="flex items-center gap-x-2">
+                          <Switch
+                          // @ts-ignore
+                            defaultChecked={product.metadata.ProductHidden ?? false}
+                            onCheckedChange={(n) => {
+
+                              // alert(n)
+                              updateProduct(product.id, 'metadata.ProductHidden', n)
+                            }} id="hide" size="small" />
+                          <Label htmlFor="hide" size="small">
+                            Hide Product on Frontend ?
+                          </Label>
+                        </div>
 
 
                       </div></Table.Cell>
