@@ -104,6 +104,9 @@ const CustomCharmsadd = () => {
 
     }
     function cahrm_update(e, q, v) {
+        alert(e)
+        alert(q)
+        alert(v)
         if (v == e[q]) {
             return;
         }
@@ -246,14 +249,21 @@ const CustomCharmsadd = () => {
                                                         </div>
                                                     </td>
                                                     <td className="whitespace-nowrap px-3 py-5 text-sm w-20 text-gray-500">
-                                                        <Input placeholder="Order" defaultValue={e.order} onBlur={(v) => {
+                                                        <Input placeholder="Order" defaultValue={e.order} onChange={(v) => {
                                                             // @ts-ignore
 
                                                             cahrm_update(e, "order", v.target.value)
                                                         }} id="sales-channel-name" />
                                                     </td>
                                                     <td className="whitespace-nowrap px-3 py-5 text-sm w-20 text-gray-500">
-                                                        <Input placeholder="qty" defaultValue={e.qty} id="sales-channel-name" />
+                                                        <Input placeholder="qty"
+                                                            onChange={(v) => {
+                                                                // @ts-ignore
+
+                                                                cahrm_update(e, "qty", v.target.value)
+                                                            }}
+
+                                                            defaultValue={e.qty} id="sales-channel-name" />
                                                     </td>
                                                     <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                                                         <IconButton className="bg-red-500" onClick={() => { delete_charms(e.id) }}>
