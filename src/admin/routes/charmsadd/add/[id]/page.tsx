@@ -104,9 +104,9 @@ const CustomCharmsadd = () => {
 
     }
     function cahrm_update(e, q, v) {
-        alert(e)
-        alert(q)
-        alert(v)
+        // alert(e)
+        // alert(q)
+        // alert(v)
         if (v == e[q]) {
             return;
         }
