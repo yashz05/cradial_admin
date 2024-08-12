@@ -23,7 +23,7 @@ export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
         // Initialize an empty array to store the final result
         let finalResult = [];
 
-        // Loop through the message2 array
+        // Loop through the parent categories
         for (let i = 0; i < results2.length; i++) {
             const parentCat = results2[i];
             // Find subcategories related to the current parent category and sort them by order
@@ -35,8 +35,10 @@ export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
             // Loop through the related subcategories
             for (let j = 0; j < relatedSubcats.length; j++) {
                 const subcat = relatedSubcats[j];
-                // Find charms related to the current subcategory
+                // Find charms related to the current subcategory and sort them by order
                 const relatedCharms = results.filter(charm => charm.parent_cat === subcat.id);
+                relatedCharms.sort((a, b) => a.order - b.order);
+
                 // Push category object to categories array
                 categories.push({
                     category: subcat.name,
