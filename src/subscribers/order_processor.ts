@@ -86,7 +86,7 @@ The Cradial Team`, // plain text body
 
                     const options = {
                         method: 'POST',
-                        url: 'http://localhost:9000/admin/charms/list/reduce',
+                        url: 'persues.cradial.in/admin/charms/list/reduce',
                         headers: {
                             'Content-Type': 'application/json',
                             'x-medusa-access-token': 'pk_01HYXJRC7R1M64WMHYJK6CJ9ME',
