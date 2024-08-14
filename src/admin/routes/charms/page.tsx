@@ -13,7 +13,9 @@ import axios from "axios";
 const CustomPage = () => {
     const { toast } = useToast();
 
-    type RequestQuery = {};
+    type RequestQuery = {
+        
+    };
 
     type ResponseData = {
         message: charms_parent_cat[];
