@@ -2,6 +2,8 @@ import {
     OrderService,
     SubscriberArgs,
     SubscriberConfig,
+    ProductService,
+    ProductVariantService,
 } from "@medusajs/medusa";
 import nodemailer from "nodemailer";
 import axios from "axios";
@@ -27,6 +29,7 @@ export default async function orderPlacedHandler({
     container,
 }: SubscriberArgs<OrderPlacedEvent>) {
     const orderService: OrderService = container.resolve("orderService");
+    const productService: ProductVariantService = container.resolve("productVariantService");
     console.log("Processing order", data.id);
     try {
         const order = await orderService.retrieve(data.id, {
@@ -79,6 +82,44 @@ The Cradial Team`, // plain text body
 
         // Reduce charm quantities for items that have charms
         for (const item of order.items) {
+            var options = {
+                method: 'POST',
+                url: `https://persues.cradial.in/admin/products/${item.variant.product_id}/variants/${item.variant_id}`,
+                headers: {
+                    // cookie: 'connect.sid=s%253Ayhu4ITVW7QcH_ty3KThZRcbP_u--t6z6.eNwodSVbQrC99x%252FrpnPr52NmLFuntNBxbejpS%252FVptRY',
+                    'x-medusa-access-token': 'pk_01HYXJRC7R1M64WMHYJK6CJ9ME',
+                    'Content-Type': 'application/json'
+                },
+                data: { inventory_quantity: 30 }
+            };
+
+            // //  @ts-ignore
+            // axios.request(options).then(function (response) {
+            //     console.log(response.data);
+            // }).catch(function (error) {
+            //     console.error(error);
+            // });
+            console.log('pppppokokokok');
+            var p = await productService.retrieve(item.variant.id);
+            console.log(p+'okokokok');
+            
+            await productService.update(item.variant, {
+                inventory_quantity: p.inventory_quantity - item.quantity
+
+            });
+            console.log(p+'ccccccc');
+            console.log(item.variant);
+            console.log(options);
+
+
+        }
+
+
+
+
+
+        for (const item of order.items) {
+
             if (item.metadata && item.metadata.charms) {
                 // @ts-ignore
                 for (const charm of item.metadata.charms) {
@@ -95,7 +136,7 @@ The Cradial Team`, // plain text body
                     };
 
                     try {
-                         // @ts-ignore
+                        // @ts-ignore
                         const response = await axios.request(options);
                         console.log(response.data);
                     } catch (error) {
