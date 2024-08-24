@@ -17,6 +17,7 @@ import {
   useAdminDeleteVariant,
   useAdminUpdateProduct,
 } from "medusa-react";
+var axios = require("axios").default;
 import { useAdminAddShippingMethod } from "medusa-react"
 
 import type { OrderDetailsWidgetProps } from "@medusajs/admin";
@@ -38,7 +39,7 @@ const OrderStatus = ({ order, notify }: OrderDetailsWidgetProps) => {
   const addShippingMethod = useAdminAddShippingMethod(
     order.id
   )
-  console.log(order);
+  // console.log(order);
 
   var status = [
     {
@@ -96,7 +97,28 @@ const OrderStatus = ({ order, notify }: OrderDetailsWidgetProps) => {
     }
   }, [])
 
+  function updateOrderStatus(status) {
+    // console.log(order.id, status);
+    setloading(true);
+    var options = {
+      method: 'POST',
+      url: 'https://persues.cradial.in/admin/orderstatus',
+      headers: {
 
+        'Content-Type': 'application/json',
+        // 'User-Agent': 'insomnia/9.3.3',
+        'x-medusa-access-token': 'pk_01HYXJRC7R1M64WMHYJK6CJ9ME'
+      },
+      data: { id: order.id, status: status }
+    };
+
+    axios.request(options).then(function (response) {
+      alert("Order Status Updated");
+      setloading(false);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }
 
   return (
     <>
@@ -109,10 +131,44 @@ const OrderStatus = ({ order, notify }: OrderDetailsWidgetProps) => {
         <div style={{
           display: "flex"
         }}>
-          <Button className="mx-2">Packed</Button>
-          <Button className="mx-2">Shipped</Button>
-          <Button className="mx-2">Out For Delivery </Button>
-          <Button variant="primary" className="mx-2">Completed</Button>
+          {/* pending
+completed
+archived
+canceled
+requires_action
+packed
+shipped
+out for delivery */}
+          <Button className="mx-2"
+            //@ts-ignore
+            disabled={order.status === "packed" || order.status === "shipped" || order.status === "out for delivery" || order.status === "completed" ? true : false}
+            isLoading={loading} onClick={() => {
+              updateOrderStatus("packed")
+            }}>Packed</Button>
+          <Button className="mx-2"
+            //@ts-ignore
+            disabled={order.status === "shipped" || order.status === "out for delivery" || order.status === "completed"? true : false}
+            isLoading={loading}
+            onClick={() => {
+
+              updateOrderStatus("shipped")
+            }}>Shipped</Button>
+          <Button className="mx-2"
+            //@ts-ignore
+            disabled={order.status === "out for delivery" || order.status === "completed" ? true : false}
+            isLoading={loading}
+            onClick={() => {
+              updateOrderStatus("out for delivery")
+            }}>Out For Delivery </Button>
+          <Button variant="primary"
+            //@ts-ignore
+            disabled={order.status === "completed" ? true : false}
+            isLoading={loading}
+            onClick={() => {
+              updateOrderStatus("completed")
+            }}
+
+            className="mx-2">Completed</Button>
           {/* <Button>Button</Button> */}
 
 
