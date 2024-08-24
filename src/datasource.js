@@ -2,10 +2,10 @@ const { DataSource } = require("typeorm")
 
 const AppDataSource = new DataSource({
   type: "postgres",
-  host: "207.180.252.68",
+  host: "185.252.235.151",
   port: 5432,
   username: "postgres",
-  password: "Yashc1899",
+  password: "Foxlo@198",
   database: "cradial",
   "synchronize": false,
   "logging": false,
@@ -22,3 +22,5 @@ const AppDataSource = new DataSource({
 module.exports = {
   datasource: AppDataSource,
 }
+
+
