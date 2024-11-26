@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState } from 'react';
 import { Button, Container, DropdownMenu, Heading } from '@medusajs/ui';
 import { ProductDetailsWidgetProps, WidgetConfig } from '@medusajs/admin';

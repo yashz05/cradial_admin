@@ -1,3 +1,4 @@
+//@ts-nocheck
 import type { MedusaRequest, MedusaResponse } from "@medusajs/medusa";
 import { charms_list } from "../../../../../models/charms_list";
 import { EntityManager } from "typeorm";

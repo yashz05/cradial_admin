@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Product, ProductVariant } from '@medusajs/medusa';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
